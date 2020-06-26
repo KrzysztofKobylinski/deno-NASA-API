@@ -22,7 +22,6 @@ app.use(api.routes());
 app.use(api.allowedMethods());
 
 app.use(async (ctx) => {
-  console.log('duap')
   const filePath = ctx.request.url.pathname;
   const fileWhitelist = [
     '/index.html',
