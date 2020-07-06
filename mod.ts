@@ -28,6 +28,7 @@ app.use(async (ctx) => {
     '/javascripts/script.js',
     '/stylesheets/style.css',
     '/images/favicon.png',
+    '/videos/space.mp4',
   ];
   console.log(filePath)
   if (fileWhitelist.includes(filePath)) {
