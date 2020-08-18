@@ -1,4 +1,6 @@
 import { join } from "https://deno.land/std/path/mod.ts";
+import * as log from "https://deno.land/std/log/mod.ts"
+
 import { BufReader } from "https://deno.land/std/io/bufio.ts";
 import { parse } from "https://deno.land/std/encoding/csv.ts";
 import * as _ from "https://raw.githubusercontent.com/lodash/lodash/4.17.15-es/lodash.js"
@@ -39,7 +41,7 @@ async function loadPlanetsData() {
 }
 
 const planets = await loadPlanetsData();
-console.log(`${planets.length} - amount of planets`);
+log.info(`${planets.length} - amount of planets`);
 
 export function getAllPlanets() {
   return planets

@@ -9,6 +9,7 @@ router.get('/', (ctx) => {
 
 
 router.get('/planets', (ctx) => {
+  // ctx.throw(501, 'no planets yet!')
   ctx.response.body = planets.getAllPlanets();
 })
 
