@@ -5,16 +5,8 @@ import * as _ from "https://raw.githubusercontent.com/lodash/lodash/4.17.15-es/l
 
 type Planet = Record<string, string>;
 
-async function loadPlanetsData() {
-  const path = join("data", "planets.csv")
-  const file = await Deno.open(path);
-  const bufReader = new BufReader(file);
-  const result = await parse(bufReader, {
-    header: true,
-    comment: '#',
-  })
-  Deno.close(file.rid)
-  const planets = (result as Planet[]).filter((planet) => {
+export function filterHabitablePlanets(planets: Planet[]) {
+  return planets.filter((planet) => {
     const prad = Number(planet["koi_prad"])
     const smass = Number(planet['koi_smass'])
     const srad = Number(planet["koi_srad"])
@@ -24,6 +16,18 @@ async function loadPlanetsData() {
     const similarStellarRadious = srad > 0.99 && srad < 1.01;
     return confirmedDisposition && similarRadious && similarMass && similarStellarRadious;
   })
+}
+
+async function loadPlanetsData() {
+  const path = join("data", "planets.csv")
+  const file = await Deno.open(path);
+  const bufReader = new BufReader(file);
+  const result = await parse(bufReader, {
+    header: true,
+    comment: '#',
+  })
+  Deno.close(file.rid)
+  const planets = filterHabitablePlanets(result as Planet[])
   return planets.map((planet) => _.pick(planet, [
     'koi_prad',
     'koi_srad',
