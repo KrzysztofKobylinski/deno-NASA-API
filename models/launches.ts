@@ -62,5 +62,13 @@ export function addOneLaunch(data: Launch) {
     upcoming: true,
     customers: ['Krzyś', 'NASA']
   }));
+}
 
+export function deleteOneLaunch(id: number) {
+  const aborted = launches.get(id)
+  if (aborted) {
+    aborted.success = false
+    aborted.upcoming = false
+  }
+  return aborted;
 }

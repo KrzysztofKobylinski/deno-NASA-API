@@ -24,12 +24,17 @@ router.get('/launches/:id', (ctx) => {
   } 
 })
 
+router.delete('/launches/:id', (ctx) => {
+  if (ctx.params?.id) {
+    const result = launches.deleteOneLaunch(Number(ctx.params.id))
+    ctx.response.body = { success: result };
+  } 
+})
+
 router.post('/launches', async (ctx) => {  
   const body = await ctx.request.body()    
   launches.addOneLaunch(body.value)
-  ctx.response.body = {
-    success: true,
-  }  
+  ctx.response.body = { success: true }  
   ctx.response.status = 201;  
 })
 
