@@ -4,10 +4,6 @@ import * as launches from './models/launches.ts'
 
 const router = new Router();
 
-// router.get('/', (ctx) => {
-//   ctx.response.body = 'hello world2'
-// })
-
 router.get('/planets', (ctx) => {
   // ctx.throw(501, 'no planets yet!')
   ctx.response.body = planets.getAllPlanets();
@@ -26,6 +22,15 @@ router.get('/launches/:id', (ctx) => {
       ctx.throw(400, 'Launch does not exists')
     }
   } 
+})
+
+router.post('/launches', async (ctx) => {  
+  const body = await ctx.request.body()    
+  launches.addOneLaunch(body.value)
+  ctx.response.body = {
+    success: true,
+  }  
+  ctx.response.status = 201;  
 })
 
 export default router;

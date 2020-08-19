@@ -56,3 +56,11 @@ export function getOneLaunch(id: number) {
   }
   return null
 }
+
+export function addOneLaunch(data: Launch) {
+  launches.set(data.flightNumber, Object.assign(data, {
+    upcoming: true,
+    customers: ['Krzyś', 'NASA']
+  }));
+
+}
