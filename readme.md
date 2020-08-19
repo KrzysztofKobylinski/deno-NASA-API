@@ -3,10 +3,10 @@ Backend Deno Server
 Deno 
 TypeScript
 REST server (get/post/delete)
-Router (oak)
+Server Routing (oak)
 External APIs fetching
 Files parsing
-Middlewares 
+Middlewares (f.e. logging)
 Backend unit testing
 Error handling
 

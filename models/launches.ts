@@ -1,5 +1,7 @@
-import * as log from 'http://deno.land/std/log/mod.ts'
-import * as _ from "https://raw.githubusercontent.com/lodash/lodash/4.17.15-es/lodash.js"
+import { 
+  log,  
+  _ 
+} from "../deps.ts";
 
 interface Launch {
   flightNumber: number;
