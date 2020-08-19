@@ -30,8 +30,6 @@ app.use(async (ctx, next) => {
   }
 })
 
-
-
 app.use(async (ctx, next) => {
   await next();
   const time = ctx.response.headers.get('X-Response-Time')
@@ -46,6 +44,7 @@ app.use(async (ctx, next) => {
 });
 
 app.use(api.routes());
+
 app.use(api.allowedMethods());
 
 app.use(async (ctx) => {
